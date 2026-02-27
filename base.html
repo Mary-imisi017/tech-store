@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+    <div class="logo">
+        <a href="/">⚡ TechStore</a>
+    </div>
+
+    <div class="links">
+        <a href="/">🏠 Home</a>
+        
+        {% if session.user_id %}
+            <span style="color: rgba(255,255,255,0.8);">Hi, {{ session.name }}</span>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+
+        <button onclick="toggleTheme()" class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
+    </div>
+</nav>
+        </nav>
+        {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('theme-btn');
+        
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            btn.innerHTML = "☀️ Light Mode";
+        } else {
+            localStorage.setItem('theme', 'light');
+            btn.innerHTML = "🌙 Dark Mode";
+        }
+    }
+
+    // Check for saved user preference on page load
+    window.onload = () => {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('theme-btn').innerHTML = "☀️ Light Mode";
+        }
+    };
+</script>
+</body>
+</html>

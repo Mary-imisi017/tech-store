@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
+    <div class="card" style="width: 100%; max-width: 450px;">
+        <h2 style="text-align: center; color: var(--primary);">Create Account</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 25px;">Join our community of tech enthusiasts.</p>
+        
+        <form action="/register" method="POST">
+            <label style="font-weight: 600;">Full Name</label>
+            <input type="text" name="name" placeholder="John Doe" required>
+
+            <label style="font-weight: 600;">Email Address</label>
+            <input type="email" name="email" placeholder="john@example.com" required>
+            
+            <label style="font-weight: 600;">Password</label>
+            <input type="password" name="password" placeholder="Min. 8 characters" required>
+            
+            <button type="submit" class="btn" style="margin-top: 15px;">Create Account</button>
+        </form>
+        
+        <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
+            Already have an account? <a href="/login" style="color: var(--primary); font-weight: bold;">Log in here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

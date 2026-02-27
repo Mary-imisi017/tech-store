@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <h1>Explore Tech</h1>
+    <span style="background: var(--secondary); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;">
+        NEW ARRIVALS
+    </span>
+</div>
+
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-item">
+        <div style="background: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">
+            💻
+        </div>
+        <h3 style="margin: 10px 0;">{{ product.name }}</h3>
+        <p style="color: #64748b; font-size: 0.9rem;">High-performance hardware</p>
+        <span class="price" style="color: var(--primary); font-size: 1.8rem;">${{ product.price }}</span>
+        
+        <form action="/buy/{{ product.id }}" method="POST">
+            <button type="submit" class="btn btn-buy">Add to Cart</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

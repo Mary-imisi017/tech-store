@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+    <div class="card" style="text-align: center; max-width: 500px; padding: 50px; border-bottom: 8px solid var(--success);">
+        <div style="font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite;">🎉</div>
+        <h1 style="color: var(--success); font-size: 2.5rem; margin-bottom: 10px;">Order Successful!</h1>
+        <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 30px;">
+            Thank you for your purchase. Your tech is being prepared for shipment!
+        </p>
+        
+        <a href="/" class="btn" style="display: inline-block; text-decoration: none; background: var(--primary); padding: 15px 15px; border-radius: 50px; color: white;">
+            Continue Shopping
+        </a>
+    </div>
+</div>
+
+<style>
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+</style>
+{% endblock %}
